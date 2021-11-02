@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MessageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Home routes
+Route::get('/', [HomeController::class, 'index']);
+// Message routes
+Route::post("/create", [MessageController::class, 'create']);
+Route::get("/view/{id}", [MessageController::class, 'view']);
+Route::delete("/delete/{id}", [MessageController::class, 'delete']);
